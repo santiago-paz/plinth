@@ -198,7 +198,7 @@ export function AreasClient({ project }: AreasClientProps) {
                                             />
                                             <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/50 to-transparent pointer-events-none" />
                                             <div className="absolute bottom-2 left-4 right-4 z-10">
-                                                <span className="text-lg font-light text-white tracking-wide font-[family-name:var(--font-didot)] uppercase">
+                                                <span className="text-lg font-light text-white tracking-wide font-[family-name:var(--font-primary)] uppercase">
                                                     {room.name}
                                                 </span>
                                             </div>

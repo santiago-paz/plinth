@@ -45,7 +45,7 @@ export function MaterialsClient({ project }: MaterialsClientProps) {
                     </div>
                 )}
                 <div className="absolute bottom-8 left-8 z-10">
-                    <h1 className="text-4xl font-serif font-light tracking-wider text-project-title md:text-5xl">
+                    <h1 className="text-4xl font-light tracking-wider font-[family-name:var(--font-primary)] md:text-5xl">
                         MATERIALS
                     </h1>
                 </div>
@@ -56,7 +56,7 @@ export function MaterialsClient({ project }: MaterialsClientProps) {
             {/* Right Side - Materials & Text */}
             <div className="relative flex h-[50vh] w-full flex-col bg-zinc-900/50 lg:h-full lg:flex-1 lg:rounded-r-2xl border-l border-white/5">
                 {/* Top Navigation */}
-                <div className="flex justify-center pt-8 pointer-events-none">
+                <div className="flex justify-center pt-8 pointer-events-none font-[family-name:var(--font-secondary)]">
                     <div className="flex gap-2 pointer-events-auto">
                         {navItems.map((item) => {
                             const isActive = pathname === item.href;
@@ -65,7 +65,7 @@ export function MaterialsClient({ project }: MaterialsClientProps) {
                                     key={item.label}
                                     onClick={() => router.push(item.href)}
                                     className={cn(
-                                        "px-4 py-2 text-sm tracking-widest rounded-lg border transition-all duration-300 backdrop-blur-sm",
+                                        "px-4 py-2 text-sm tracking-widest rounded-lg border transition-all duration-300 backdrop-blur-sm cursor-pointer",
                                         isActive
                                             ? "border-white/20 bg-white/10 text-white"
                                             : "border-transparent text-zinc-500 hover:text-white hover:border-white/10"
@@ -117,7 +117,8 @@ export function MaterialsClient({ project }: MaterialsClientProps) {
                 {project.materials?.description && (
                     <div className="relative z-10 w-full p-16 mt-auto">
                         <div className="prose prose-invert max-w-none">
-                            <p className="text-lg text-xs font-light leading-relaxed text-white first-letter:float-left first-letter:mr-3 first-letter:text-5xl first-letter:font-[family-name:var(--font-didot)] first-letter:text-white first-letter:leading-[0.8] first-letter:mt-2 lg:first-letter:text-7xl">
+                            <p className="text-lg text-xs font-light leading-relaxed text-white first-letter:float-left first-letter:mr-3 first-letter:text-5xl 
+                            font-[family-name:var(--font-secondary)] first-letter:font-[family-name:var(--font-primary)] first-letter:text-white first-letter:leading-[0.8] first-letter:mt-2 lg:first-letter:text-7xl">
                                 {project.materials?.description}
                             </p>
                         </div>

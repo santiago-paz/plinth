@@ -1,17 +1,7 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { brandConfig } from "@/config/brand";
+import { primaryFont, secondaryFont } from "@/config/fonts";
 import "./globals.css";
-
-const avenir = localFont({
-  src: "../public/fonts/Avenir LT 55 Roman.ttf",
-  variable: "--font-avenir",
-});
-
-const didot = localFont({
-  src: "../public/fonts/Didot.otf",
-  variable: "--font-didot",
-});
 
 export const metadata: Metadata = {
   title: brandConfig.metadata.title,
@@ -26,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${avenir.variable} ${didot.variable} antialiased select-none`}
+        className={`${primaryFont.variable} ${secondaryFont.variable} antialiased select-none`}
       >
         {/* Mobile/Tablet blocker */}
         <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[var(--background)] text-[var(--foreground)] p-8 text-center lg:hidden">

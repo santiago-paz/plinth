@@ -194,7 +194,7 @@ function NavigationCard({
 
                 {/* Button Area - Positioned in the Cutout */}
                 <div className="bg-black/50 backdrop-blur-md absolute bottom-0 right-0 flex items-center justify-end gap-3 rounded-tl-2xl px-4 pt-2 pb-[3px]">
-                    <span className="text-sm font-didot font-medium tracking-widest uppercase text-zinc-200 group-hover:text-white transition-colors flex items-center h-full" style={{ fontFamily: "var(--font-didot)" }}>
+                    <span className="text-sm font-medium tracking-widest uppercase text-zinc-200 group-hover:text-white transition-colors flex items-center h-full" style={{ fontFamily: "var(--font-primary)" }}>
                         {label}
                     </span>
                     {/* <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-transparent transition-all duration-300 group-hover:bg-white group-hover:text-black group-hover:border-transparent text-white">
@@ -252,7 +252,7 @@ function AnimatedText({
                 <motion.span
                     key={index}
                     variants={child as Variants}
-                    style={{ display: "inline-block", fontFamily: "var(--font-didot)" }}
+                    style={{ display: "inline-block", fontFamily: "var(--font-primary)" }}
                 >
                     {letter === " " ? "\u00A0" : letter}
                 </motion.span>
