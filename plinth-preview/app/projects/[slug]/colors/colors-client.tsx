@@ -67,7 +67,7 @@ export function ColorsClient({ project }: ColorsClientProps) {
                     </div>
                 )}
                 <div className="absolute bottom-8 left-8 z-10">
-                    <h1 className="text-4xl font-serif font-light tracking-wider text-white md:text-6xl">
+                    <h1 className="text-4xl font-serif font-light tracking-wider text-project-title md:text-6xl">
                         COLORS
                     </h1>
                 </div>

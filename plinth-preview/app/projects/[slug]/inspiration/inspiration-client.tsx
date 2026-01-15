@@ -145,7 +145,7 @@ export function InspirationClient({ project }: InspirationClientProps) {
                     </div>
                 )}
                 <div className="absolute bottom-8 left-8 z-10">
-                    <h1 className="text-4xl font-serif font-light tracking-wider text-white md:text-5xl">
+                    <h1 className="text-4xl font-serif font-light tracking-wider text-project-title md:text-5xl">
                         INSPIRATION
                     </h1>
                 </div>
