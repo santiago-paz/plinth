@@ -74,12 +74,12 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                 <div className="absolute bottom-12 left-8 lg:bottom-8 lg:left-12 pointer-events-auto" style={{ opacity: 0.8 }}>
                     <AnimatedText
                         text={project.title || ''}
-                        className="text-5xl text-[#efe7d2] font-medium uppercase tracking-wide lg:text-7xl drop-shadow-2xl"
+                        className="text-5xl text-accent font-medium uppercase tracking-wide lg:text-7xl drop-shadow-2xl"
                         delay={0.5}
                     />
                     <AnimatedText
                         text={project.authorName || ''}
-                        className="mb-2 text-2xl font-medium tracking-widest text-[#efe7d2] uppercase"
+                        className="mb-2 text-2xl font-medium tracking-widest text-accent uppercase"
                         delay={0.4}
                     />
                 </div>
