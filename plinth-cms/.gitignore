@@ -22,3 +22,5 @@ dist/
 public/uploads/
 database/
 !database/.keep
+.strapi/
+.strapi-updater.json
