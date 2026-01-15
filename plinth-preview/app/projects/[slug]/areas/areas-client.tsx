@@ -158,7 +158,7 @@ export function AreasClient({ project }: AreasClientProps) {
                         </div>
                     )}
                     <div className="absolute bottom-8 left-8 z-10">
-                        <h1 className="text-4xl font-serif font-light tracking-wider text-white md:text-6xl">
+                        <h1 className="text-4xl font-light tracking-wider text-white md:text-6xl font-[family-name:var(--font-primary)]">
                             AREAS
                         </h1>
                     </div>
@@ -208,7 +208,7 @@ export function AreasClient({ project }: AreasClientProps) {
                             </div>
                         ) : (
                             <div className="flex h-full items-center justify-center">
-                                <p className="text-zinc-500">No hay áreas disponibles</p>
+                                <p className="text-zinc-500 font-[family-name:var(--font-secondary)]">No hay áreas disponibles</p>
                             </div>
                         )}
                     </div>

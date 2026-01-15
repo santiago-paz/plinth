@@ -78,7 +78,7 @@ export function PlansClient({ project }: PlansClientProps) {
     if (plans.length === 0 && !cover) {
         return (
             <div className="flex h-full items-center justify-center text-zinc-500">
-                No hay planos disponibles.
+                <span className="text-zinc-500 font-[family-name:var(--font-secondary)]">No hay planos disponibles.</span>
             </div>
         );
     }
