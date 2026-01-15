@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { brandConfig } from "@/config/brand";
 import "./globals.css";
 
 const avenir = localFont({
@@ -13,8 +14,8 @@ const didot = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Pedro Peña",
-  description: "",
+  title: brandConfig.metadata.title,
+  description: brandConfig.metadata.description,
 };
 
 export default function RootLayout({
@@ -30,10 +31,9 @@ export default function RootLayout({
         {/* Mobile/Tablet blocker */}
         <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[var(--background)] text-[var(--foreground)] p-8 text-center lg:hidden">
           <div className="max-w-md space-y-4">
-            <h2 className="text-xl font-medium">Solo versión de escritorio</h2>
+            <h2 className="text-xl font-medium">{brandConfig.messages.desktopOnly.title}</h2>
             <p className="text-sm opacity-80 leading-relaxed">
-              Esta experiencia está diseñada para ser visualizada en pantallas grandes. 
-              Por favor, accede desde un ordenador para ver el contenido correctamente.
+              {brandConfig.messages.desktopOnly.message}
             </p>
           </div>
         </div>
