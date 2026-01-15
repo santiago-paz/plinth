@@ -60,7 +60,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                     />
                 ) : (
                     <div className="h-full w-full bg-zinc-800 flex items-center justify-center">
-                        <span className="text-zinc-500">No hay video disponible</span>
+                        <span className="text-zinc-500 font-[family name:var(--font-secondary)]">No hay video disponible</span>
                     </div>
                 )}
 

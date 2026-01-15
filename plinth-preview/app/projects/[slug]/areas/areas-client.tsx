@@ -154,7 +154,7 @@ export function AreasClient({ project }: AreasClientProps) {
                         />
                     ) : (
                         <div className="flex h-full w-full items-center justify-center bg-zinc-900">
-                            <span className="text-zinc-500">No hay video disponible</span>
+                            <span className="text-zinc-500 font-[family-name:var(--font-secondary)]">No hay video disponible</span>
                         </div>
                     )}
                     <div className="absolute bottom-8 left-8 z-10">
