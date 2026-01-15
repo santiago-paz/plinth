@@ -3,7 +3,7 @@
 import { Project } from "@/lib/types";
 import { getStrapiMedia } from "@/lib/strapi/api";
 import { motion, Variants, AnimatePresence } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -15,9 +15,13 @@ interface ProjectHeroProps {
 export function ProjectHero({ project }: ProjectHeroProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [menuWidth, setMenuWidth] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        const updateMenuWidth = () => {
+        const handleResize = () => {
+            const mobile = window.innerWidth < 768;
+            setIsMobile(mobile);
+
             const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
             // max-w-md is usually 28rem
             const maxWidth = 28 * rootFontSize;
@@ -25,9 +29,9 @@ export function ProjectHero({ project }: ProjectHeroProps) {
             setMenuWidth(Math.min(window.innerWidth, maxWidth));
         };
 
-        updateMenuWidth();
-        window.addEventListener('resize', updateMenuWidth);
-        return () => window.removeEventListener('resize', updateMenuWidth);
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     // Helper to get images with fallbacks
@@ -46,7 +50,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
     };
 
     return (
-        <div className="relative h-full w-full bg-zinc-950 overflow-hidden">
+        <div className="relative h-screen w-full bg-zinc-950 overflow-hidden">
             {/* Full Screen Hero Video */}
             <div className="absolute inset-0 h-full w-full">
                 {heroVideoUrl ? (
@@ -86,18 +90,36 @@ export function ProjectHero({ project }: ProjectHeroProps) {
             </div>
 
             {/* Toggle Button */}
-            <motion.button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                animate={{ x: isMenuOpen ? -menuWidth : 0 }}
-                transition={{ type: "spring", damping: 30, stiffness: 300 }}
-                className="absolute top-1/2 -translate-y-1/2 right-0 z-[60] w-8 h-12 2xl:w-8 2xl:h-16 bg-zinc-950/30 rounded-l-lg border-y border-l border-white/10 flex items-center justify-center hover:bg-zinc-900/50 transition-colors focus:outline-none pointer-events-auto border-r-0"
-            >
-                {isMenuOpen ? (
-                    <ChevronRight strokeWidth={1} className="text-white w-6 h-6 2xl:w-10 2xl:h-10" />
-                ) : (
-                    <ChevronLeft strokeWidth={1} className="text-white w-6 h-6 2xl:w-10 2xl:h-10" />
+            <AnimatePresence>
+                {(!isMobile || !isMenuOpen) && (
+                    <motion.button
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={!isMobile 
+                            ? { x: isMenuOpen ? -menuWidth : 0, scale: 1, opacity: 1 } 
+                            : { scale: 1, opacity: 1 }
+                        }
+                        exit={{ scale: 0, opacity: 0 }}
+                        transition={{ type: "spring", damping: 30, stiffness: 300 }}
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        className={`absolute z-[60] bg-zinc-950/30 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-zinc-900/50 transition-colors focus:outline-none pointer-events-auto
+                            ${isMobile 
+                                ? "bottom-8 right-8 w-14 h-14 rounded-full" 
+                                : "top-1/2 -translate-y-1/2 right-0 w-8 h-12 2xl:w-8 2xl:h-16 rounded-l-lg border-y border-l border-r-0"
+                            }
+                        `}
+                    >
+                        {isMobile ? (
+                            <ChevronLeft className="text-white w-6 h-6" />
+                        ) : (
+                            isMenuOpen ? (
+                                <ChevronRight strokeWidth={1} className="text-white w-6 h-6 2xl:w-10 2xl:h-10" />
+                            ) : (
+                                <ChevronLeft strokeWidth={1} className="text-white w-6 h-6 2xl:w-10 2xl:h-10" />
+                            )
+                        )}
+                    </motion.button>
                 )}
-            </motion.button>
+            </AnimatePresence>
 
             {/* Floating Navigation Cards */}
             <AnimatePresence>
@@ -112,19 +134,41 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                             className="absolute inset-0 z-40 bg-black/60 backdrop-blur-[6px] cursor-pointer"
                         />
 
-                        {/* Sidebar */}
+                        {/* Sidebar / Bottom Sheet */}
                         <motion.div
-                            initial={{ x: "100%" }}
-                            animate={{ x: 0 }}
-                            exit={{ x: "100%" }}
+                            initial={isMobile ? { y: "100%" } : { x: "100%" }}
+                            animate={isMobile ? { y: 0 } : { x: 0 }}
+                            exit={isMobile ? { y: "100%" } : { x: "100%" }}
                             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-                            className="absolute right-0 top-0 z-50 h-full w-full max-w-md bg-zinc-950/30 p-6"
+                            className={`absolute z-50 bg-zinc-950/80 backdrop-blur-xl p-6
+                                ${isMobile
+                                    ? "bottom-0 left-0 right-0 w-full h-[75vh] rounded-t-3xl border-t border-white/10"
+                                    : "right-0 top-0 h-full w-full max-w-md border-l border-white/10"
+                                }
+                            `}
                         >
-                            {/* Custom Left Border with Gap for Button */}
-                            <div className="absolute left-0 top-0 w-px bg-white/10 h-[calc(50%-1.5rem)] 2xl:h-[calc(50%-2rem)]" />
-                            <div className="absolute left-0 bottom-0 w-px bg-white/10 h-[calc(50%-1.5rem)] 2xl:h-[calc(50%-2rem)]" />
+                            {/* Custom Left Border with Gap for Button (Desktop only) */}
+                            {!isMobile && (
+                                <>
+                                    <div className="absolute left-0 top-0 w-px bg-white/10 h-[calc(50%-1.5rem)] 2xl:h-[calc(50%-2rem)]" />
+                                    <div className="absolute left-0 bottom-0 w-px bg-white/10 h-[calc(50%-1.5rem)] 2xl:h-[calc(50%-2rem)]" />
+                                </>
+                            )}
+                            
+                            {/* Mobile Drag Handle */}
+                            {isMobile && (
+                                <>
+                                    <div className="absolute top-4 left-1/2 -translate-x-1/2 w-12 h-1.5 bg-zinc-700/50 rounded-full" />
+                                    <button 
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="absolute top-4 right-4 p-2 text-zinc-400 hover:text-white transition-colors z-50"
+                                    >
+                                        <X className="w-6 h-6" />
+                                    </button>
+                                </>
+                            )}
 
-                            <div className="flex h-full flex-col">
+                            <div className={`flex h-full flex-col ${isMobile ? 'pt-8' : ''}`}>
                                 <motion.div
                                     className="flex flex-1 flex-col gap-4 overflow-y-auto"
                                     variants={stagger}
