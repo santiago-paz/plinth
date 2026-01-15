@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-didot);
+  --font-display: var(--font-avenir);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-avenir), sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-didot), serif;
+}
+
+/* 
+   Scaling strategy for large screens:
+   We use viewport width (vw) units to maintain the same visual proportions 
+   as a standard laptop screen (approx 1440px wide).
+   
+   Base ratio: 16px / 1440px ≈ 1.11vw
+   
+   This ensures that on a 4K screen (3840px), the base font size becomes:
+   3840 * 1.11% ≈ 42.6px
+   
+   This effectively scales all rem-based UI elements (padding, margins, font-sizes, widths)
+   proportionally to the screen width.
+*/
+@media (min-width: 1800px) {
+  html {
+    font-size: 1.25vw;
+  }
+}
+
+/* HTML: <div class="folded-rectangle"></div> */
+.folded-rectangle {
+  --r: 40px; /* radius */
+  aspect-ratio: 1.5;
+  border-radius: var(--r) 0/calc(2*var(--r)) 0;
+  padding-block: var(--r);
+  --_m:#0000 100%,#000 calc(100% + 1px);
+  mask:
+    conic-gradient(#000 0 0) content-box,
+    radial-gradient(var(--r) at 100% 100%,var(--_m)) 0 100% no-repeat,
+    radial-gradient(var(--r) at 0    0   ,var(--_m)) 100% 0 no-repeat;
+  mask-size: var(--r) var(--r);
+}

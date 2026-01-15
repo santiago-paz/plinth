@@ -1,0 +1,37 @@
+{
+    "collectionName": "components_areas_rooms",
+    "info": {
+        "displayName": "Room",
+        "icon": "house-user",
+        "description": "A room with photos and video"
+    },
+    "options": {},
+    "attributes": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "video": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+                "videos",
+                "files",
+                "images",
+                "audios"
+            ]
+        },
+        "photos": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "collectionName": "components_sections_materials",
+    "info": {
+        "displayName": "Materials",
+        "icon": "layer-group",
+        "description": "Materials section"
+    },
+    "options": {},
+    "attributes": {
+        "gallery": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "description": {
+            "type": "text"
+        },
+        "video": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+                "videos",
+                "files",
+                "images",
+                "audios"
+            ]
+        }
+    }
+}

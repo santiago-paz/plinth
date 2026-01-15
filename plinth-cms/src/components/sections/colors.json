@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_sections_colors",
+  "info": {
+    "displayName": "Colors",
+    "icon": "paint-brush",
+    "description": "Colors section"
+  },
+  "options": {},
+  "attributes": {
+    "palette": {
+      "type": "component",
+      "repeatable": true,
+      "component": "colors.color-item"
+    },
+    "description": {
+      "type": "text"
+    },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "videos",
+        "files",
+        "images",
+        "audios"
+      ]
+    }
+  }
+}
+

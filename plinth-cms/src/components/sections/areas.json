@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_sections_areas",
+  "info": {
+    "displayName": "Areas",
+    "icon": "house-user",
+    "description": "Areas section"
+  },
+  "options": {},
+  "attributes": {
+    "list": {
+      "type": "component",
+      "repeatable": true,
+      "component": "areas.room"
+    },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "videos",
+        "files",
+        "images",
+        "audios"
+      ]
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
+

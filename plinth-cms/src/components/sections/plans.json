@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_sections_plans",
+  "info": {
+    "displayName": "Plans",
+    "icon": "map",
+    "description": "Plans section"
+  },
+  "options": {},
+  "attributes": {
+    "list": {
+      "type": "component",
+      "repeatable": true,
+      "component": "plans.plan-item"
+    },
+    "title": {
+      "type": "string"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

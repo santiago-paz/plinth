@@ -1,0 +1,47 @@
+{
+    "collectionName": "components_sections_inspirations",
+    "info": {
+        "displayName": "Inspiration",
+        "icon": "lightbulb",
+        "description": "Inspiration section"
+    },
+    "options": {},
+    "attributes": {
+        "text": {
+            "type": "richtext"
+        },
+        "gallery": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "video": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+                "videos",
+                "files",
+                "images",
+                "audios"
+            ]
+        },
+        "cover": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "collectionName": "components_plans_plan_items",
+    "info": {
+        "displayName": "Plan Item",
+        "icon": "map",
+        "description": "A plan image with description"
+    },
+    "options": {},
+    "attributes": {
+        "picture": {
+            "type": "media",
+            "multiple": false,
+            "required": true,
+            "allowedTypes": [
+                "images",
+                "files"
+            ]
+        },
+        "description": {
+            "type": "text"
+        }
+    }
+}
