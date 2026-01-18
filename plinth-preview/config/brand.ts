@@ -1,20 +1,20 @@
 export const brandConfig = {
-  name: "Pedro Peña",
+  name: "Plinth Architecture",
   metadata: {
     title: {
-      default: "Pedro Peña",
-      template: "%s | Pedro Peña",
+      default: "Plinth Architecture",
+      template: "%s | Plinth Architecture",
     },
-    description: "Interior Design Studio",
+    description: "Architecture Studio",
   },
   company: {
-    name: "Pedro Peña",
-    url: "https://pedropena.com",
+    name: "Plinth Architecture",
+    url: "https://plinth.com",
   },
   messages: {
     desktopOnly: {
-      title: "Solo versión de escritorio",
-      message: "Esta experiencia está diseñada para ser visualizada en pantallas grandes. Por favor, accede desde un ordenador para ver el contenido correctamente.",
+      title: "Only desktop version",
+      message: "This experience is designed to be viewed on large screens. Please access from a computer to view the content correctly.",
     }
   }
 };
